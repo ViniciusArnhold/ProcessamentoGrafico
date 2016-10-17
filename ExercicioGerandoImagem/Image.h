@@ -9,7 +9,7 @@ public:
 	Image();
 
 	//Core
-	void plot(Image sobreposta, int posicaoX, int posicaoY);
+	void plot(Image* sobreposta, int posicaoX, int posicaoY);
 	void subImage(Image* dest, int startx, int starty);
 	void plotInto(Image* sobreposta, int posicaoX, int posicaoY, char *zBuffer, char z);
 

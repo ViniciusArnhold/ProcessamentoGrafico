@@ -83,16 +83,17 @@ void Image::subImage(Image *src, int startx, int starty) {
 	}
 }
 
-void Image::plotInto(Image* sobreposta, int posicaoX, int posicaoY, char* zBuffer, char z)
+void Image::plotInto(Image* ref, int posicaoX, int posicaoY, char* zBuffer, char z)
 {
 	int xRef = 0;
 	int yRef = 0;
 
-	for (int x = posicaoX;x < sobreposta->getWidth()+posicaoX && x< this->width; x++) {
+	for (int x = posicaoX; x < ref->getWidth() + posicaoX && x < this->width; x++) {
 
-		for (int y = posicaoY; y < sobreposta->getHeight()+posicaoY && y< this->height; y++) {
+		for (int y = posicaoY; y < ref->getHeight() + posicaoY && y < this->height; y++) {
 			int alfa = (getPixel(x, y) >> 24) & 0xff;
 			if (alfa != 0) {
+<<<<<<< HEAD
 				if (!alfa == 255) {
 					if (z < zBuffer[xRef*yRef]) {
 						sobreposta->setPixel(calcularPixels(getPixel(x, y), sobreposta->getPixel(xRef, yRef)), xRef, yRef);
@@ -102,6 +103,13 @@ void Image::plotInto(Image* sobreposta, int posicaoX, int posicaoY, char* zBuffe
 					if (z < zBuffer[xRef*yRef]) {
 						sobreposta->setPixel(getPixel(x, y), xRef, yRef);
 					}
+=======
+				if (alfa != 255) {
+					ref->setPixel(calcularPixels(getPixel(x, y), ref->getPixel(xRef, yRef)), xRef, yRef);
+				}
+				else {
+					ref->setPixel(getPixel(x, y), xRef, yRef);
+>>>>>>> origin/master
 				}
 			}
 			yRef++;
@@ -112,14 +120,14 @@ void Image::plotInto(Image* sobreposta, int posicaoX, int posicaoY, char* zBuffe
 
 }
 
-void Image::plot(Image sobreposta, int posicaoX, int posicaoY) {
+void Image::plot(Image* sobreposta, int posicaoX, int posicaoY) {
 
 	int xSobreposta = 0;
 	int ySobreposta = 0;
 
-	for (int x = posicaoX; x < sobreposta.width + posicaoX; x++) {
-		for (int y = posicaoY; y < posicaoY + sobreposta.height; y++) {
-			int pixelSobreposta = sobreposta.getPixel(xSobreposta, ySobreposta);
+	for (int x = posicaoX; x < sobreposta->width + posicaoX; x++) {
+		for (int y = posicaoY; y < posicaoY + sobreposta->height; y++) {
+			int pixelSobreposta = sobreposta->getPixel(xSobreposta, ySobreposta);
 			int alfa = (pixelSobreposta >> 24) & 0xff;
 			if (alfa == 0) {
 			}

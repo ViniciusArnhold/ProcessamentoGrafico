@@ -118,6 +118,7 @@ void keyboard(unsigned char key, int x, int y) {
 	default:
 		break;
 	}
+	cout << "Pessoa =" << objPerAndando.getPosX() << "Cobra = " << objCobra.getPosX() << endl;
 	glutPostRedisplay();
 }
 
