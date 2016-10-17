@@ -36,12 +36,11 @@ void Layer::scroll(bool right)
 	}
 }
 
-
-void Layer::plot(Image * dest, char zBuffer[], int z)
+void Layer::plot(Image * vpImage, char zBuffer[],int z)
 {
-	background.plotInto(dest, posX, posY, zBuffer, z);
+	background.plotInto(vpImage, posX, posY, zBuffer, z);
 	for (int i = 0; i < elements.size(); i++) {
-		dest->plot(elements.at(i)->getFrame(), elements.at(i)->getPosX(), elements.at(i)->getPosY());
+		vpImage->plot(elements.at(i)->getFrame(), elements.at(i)->getPosX(), elements.at(i)->getPosY());
 	}
 }
 

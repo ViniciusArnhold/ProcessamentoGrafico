@@ -63,15 +63,14 @@ void dispose();
 void updateScene(int value) {
 	scene = Image(1500, 600);
 	int z = 5;
-	
 	for (int i = 0; i < layers.size(); i++) {
-		layers.at(i).plot(&scene, zBuffer, z);
+		layers.at(i).plot(&scene, zBuffer,z);
 		z--;
 	}
-
 	for (int i = 0; i < 1500 * 600; i++) {
-		zBuffer[i] = zBuffer2[i];
 	}
+		zBuffer[i] = zBuffer2[i];
+
 }
 
 void display(void)
@@ -214,13 +213,13 @@ void init()
 	layers.at(4).computeScrollRateX(110);
 
 
-	zBuffer = new char[1500*600];
-	zBuffer2 = new char[1500*600];
+	zBuffer = new char[1500 * 600];
+	zBuffer2 = new char[1500 * 600];
 
 	for (int i = 0; i < 1500 * 600; i++) {
-		zBuffer[i] = 6;
+	}
 		zBuffer2[i] = 6;
-	}
+		zBuffer[i] = 6;
 
 
 }
