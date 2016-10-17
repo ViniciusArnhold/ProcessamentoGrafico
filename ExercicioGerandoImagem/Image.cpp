@@ -94,10 +94,14 @@ void Image::plotInto(Image* sobreposta, int posicaoX, int posicaoY, char* zBuffe
 			int alfa = (getPixel(x, y) >> 24) & 0xff;
 			if (alfa != 0) {
 				if (!alfa == 255) {
-					sobreposta->setPixel(calcularPixels(getPixel(x, y), sobreposta->getPixel(xRef, yRef)), xRef, yRef);
+					if (z < zBuffer[xRef*yRef]) {
+						sobreposta->setPixel(calcularPixels(getPixel(x, y), sobreposta->getPixel(xRef, yRef)), xRef, yRef);
+					}
 				}
 				else {
-					sobreposta->setPixel(getPixel(x, y), xRef, yRef);
+					if (z < zBuffer[xRef*yRef]) {
+						sobreposta->setPixel(getPixel(x, y), xRef, yRef);
+					}
 				}
 			}
 			yRef++;
