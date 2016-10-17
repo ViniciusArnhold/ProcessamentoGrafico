@@ -185,6 +185,7 @@ void init()
 	for (int i = 0; i < size / xPA; i++) {
 		leitor.getImage().subImage(&backup, i*xPA, 0);
 		animPerAndando.addFrame(backup);
+		backup = Image(xPA, yPA);
 	}
 
 	leitor.ler("..\\Imagens\\Cobras.ptm");
@@ -193,6 +194,7 @@ void init()
 	for (int i = 0; i < size / xCobra; i++) {
 		leitor.getImage().subImage(&backup, i*xCobra, 0);
 		animCobra.addFrame(backup);
+		backup = Image(xCobra, yCobra);
 	}
 	objPerAndando.setSprite(&animPerAndando);
 	objPerAndando.setPosX(100);
